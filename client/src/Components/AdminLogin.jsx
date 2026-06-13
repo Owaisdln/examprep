@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import loginBg from "../image/logigBg.jpg";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const AdminLogin = () => {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -109,9 +110,9 @@ const AdminLogin = () => {
             />
           </div>
           <div style={{ marginBottom: "1rem", textAlign: "right" }}>
-            <a href="#" style={{ color: "white", textDecoration: "underline" }}>
+            <Link to="/regestration" style={{ color: "white", textDecoration: "underline" }}>
               Don't have an account?
-            </a>
+            </Link>
           </div>
           <button
             type="submit"
