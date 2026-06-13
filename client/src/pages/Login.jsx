@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import loginBg from "../image/logigBg.jpg";
+import axios from "axios";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -13,7 +14,7 @@ const Login = () => {
   }
   const handeleSubmit = async(e)=>{
     e.preventDefault();
-    const res = await axios.post ('http://localhost:5000/examinee/login', data)
+    const res = await axios.post('http://localhost:5000/api/examinee/login', data)
     if (res.data.message == "Login Successfully") {
       localStorage.setItem("userRole", res.data.user.role);
       localStorage.setItem("userEmail", res.data.user.email);
@@ -34,7 +35,7 @@ const Login = () => {
       }}
       className="text-white"
     >
-      <form
+      <form onSubmit={handeleSubmit}
         style={{
           background: `linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25)), url(${loginBg})`,
           backgroundSize: "cover",

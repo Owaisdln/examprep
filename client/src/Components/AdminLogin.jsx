@@ -19,10 +19,10 @@ const AdminLogin = () => {
     );
     console.log(res.data);
 
-    if ((res.data.message = "Login Successfully")) {
+    if (res.data.message == "Login Successfully") {
       localStorage.setItem("role", res.data.data.role);
 
-      window.location.href = "/adminDashboard";
+      window.location.href = "/admindashboard";
     }
   };
 
