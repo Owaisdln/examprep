@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import API_BASE from "../api";
 import { useEffect } from "react";
 import loginBg from "../image/logigBg.jpg";
 
@@ -21,7 +22,7 @@ const AddSubjectForm = () => {
   const handleSubmit = async (e) => {
     //window.alert("Hello")
     try {
-      const res = await axios.post("http://localhost:5000/api/subject", form);
+      const res = await axios.post(`${API_BASE}/api/subject`, form);
       if (res) {
         alert("Subject Added Successfully");
       }
@@ -31,7 +32,7 @@ const AddSubjectForm = () => {
   };
   //fetch data
   const handlefetch = async () => {
-    const res = await axios.get("http://localhost:5000/api/subject");
+    const res = await axios.get(`${API_BASE}/api/subject`);
     //console.log(res.data);
     setData(res.data.data);
   };

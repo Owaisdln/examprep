@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_BASE from "../api";
 import loginBg from "../image/logigBg.jpg";
 
 const QuestionForm = () => {
@@ -17,7 +18,7 @@ const QuestionForm = () => {
 
   useEffect(() => {
     const fetchQuestions = async () => {
-      const res = await axios.get("http://localhost:5000/api/question");
+      const res = await axios.get(`${API_BASE}/api/question`);
       setQuestions(res.data.data);
     };
     fetchQuestions();
@@ -33,7 +34,7 @@ const QuestionForm = () => {
     try {
       if (editingId) {
         const res = await axios.put(
-          `http://localhost:5000/api/question/${editingId}`,
+          `${API_BASE}/api/question/${editingId}`,
           formData
         );
         if (res.data.success) {
@@ -46,7 +47,7 @@ const QuestionForm = () => {
         }
       } else {
         const res = await axios.post(
-          "http://localhost:5000/api/question",
+          `${API_BASE}/api/question`,
           formData
         );
         if (res.data && res.data.data) {
@@ -89,7 +90,7 @@ const QuestionForm = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/question/${question._id}`);
+      await axios.delete(`${API_BASE}/api/question/${question._id}`);
       setQuestions((prev) => prev.filter((q) => q._id !== question._id));
       alert("Question deleted successfully!");
     } catch (err) {

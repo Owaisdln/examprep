@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import loginBg from "../image/logigBg.jpg";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import API_BASE from "../api";
 
 const AdminLogin = () => {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -15,7 +16,7 @@ const AdminLogin = () => {
     e.preventDefault();
 
     const res = await axios.post(
-      "http://localhost:5000/api/adminlogin/login",
+      `${API_BASE}/api/adminlogin/login`,
       form
     );
     console.log(res.data);

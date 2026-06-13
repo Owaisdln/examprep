@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import loginBg from "../image/logigBg.jpg";
 import axios from "axios";
+import API_BASE from "../api";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -15,7 +16,7 @@ const Login = () => {
   }
   const handeleSubmit = async(e)=>{
     e.preventDefault();
-    const res = await axios.post('http://localhost:5000/api/examinee/login', data)
+    const res = await axios.post(`${API_BASE}/api/examinee/login`, data)
     if (res.data.message == "Login Successfully") {
       localStorage.setItem("userRole", res.data.user.role);
       localStorage.setItem("userEmail", res.data.user.email);

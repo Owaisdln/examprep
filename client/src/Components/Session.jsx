@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import API_BASE from "../api";
 import { useEffect } from "react";
 import loginBg from "../image/logigBg.jpg";
 
@@ -24,14 +25,14 @@ const AddSessionForm = () => {
     try {
       if (editForm) {
         const res = await axios.put(
-          `http://localhost:5000/api/session/${id.id}`,
+          `${API_BASE}/api/session/${id.id}`,
           form
         );
         if (res) {
           alert("Session Updated Successfully");
         }
       } else {
-        const res = await axios.post("http://localhost:5000/api/session", form);
+        const res = await axios.post(`${API_BASE}/api/session`, form);
         if (res) {
           alert("Session Added Successfully");
         }
@@ -42,7 +43,7 @@ const AddSessionForm = () => {
   };
   //fetch data
   const handlefetch = async () => {
-    const res = await axios.get("http://localhost:5000/api/session");
+    const res = await axios.get(`${API_BASE}/api/session`);
     //console.log(res.data);
     setData(res.data.data);
   };
@@ -52,7 +53,7 @@ const AddSessionForm = () => {
   //handle delete
   const handleDelete = async (id) => {
     // console.log(id)
-    const res = await axios.delete(`http://localhost:5000/api/session/${id}`);
+    const res = await axios.delete(`${API_BASE}/api/session/${id}`);
     if (res) {
       alert("Deleted successfully");
     } else {

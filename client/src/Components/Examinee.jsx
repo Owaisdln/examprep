@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import API_BASE from "../api";
 
 const ExamineeTable = () => {
  const [data , setData] = useState([]);
  const handlefetch= async()=>{
-  const res = await axios.get('http://localhost:5000/api/examinee')
+  const res = await axios.get(`${API_BASE}/api/examinee`)
     setData(res.data.data)
   // console.log(res.data.data)
  }
